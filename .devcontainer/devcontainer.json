@@ -41,8 +41,7 @@
 				"firsttris.vscode-jest-runner",
 				"mhutchie.git-graph",
 				"nrwl.angular-console",
-				"oderwat.indent-rainbow",
-				"ms-playwright.playwright"
+				"oderwat.indent-rainbow"
 			]
 		}
 	},
