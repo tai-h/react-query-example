@@ -1,4 +1,3 @@
-import { Home } from '@/features/Home';
 import { Suspense, useMemo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -24,7 +23,10 @@ const createRouter = () => {
   return createBrowserRouter([
     {
       path: '/',
-      element: <Home />,
+      lazy: async () => {
+        const { Home } = await import('@/features/Home');
+        return { Component: Home };
+      },
     },
   ]);
 };
