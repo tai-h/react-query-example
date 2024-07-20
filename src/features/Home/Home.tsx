@@ -13,7 +13,7 @@ export function Home() {
 
       <ul>
         <li>
-          <Link to="/">Home root</Link>
+          <Link to="/fetch-example-1">fetch Example 1</Link>
         </li>
       </ul>
     </StyledHome>

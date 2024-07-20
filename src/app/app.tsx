@@ -28,6 +28,13 @@ const createRouter = () => {
         return { Component: Home };
       },
     },
+    {
+      path: '/fetch-example-1',
+      lazy: async () => {
+        const { FetchExample1 } = await import('@/features/FetchExample1');
+        return { Component: FetchExample1 };
+      },
+    },
   ]);
 };
 
