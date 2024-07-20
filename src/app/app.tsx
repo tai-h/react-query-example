@@ -7,13 +7,7 @@ type AppProviderProps = {
 
 const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center w-screen h-screen">
-          loading...
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen">loading...</div>}>
       {children}
     </Suspense>
   );
@@ -33,6 +27,13 @@ const createRouter = () => {
       lazy: async () => {
         const { FetchExample1 } = await import('@/features/FetchExample1');
         return { Component: FetchExample1 };
+      },
+    },
+    {
+      path: '/fetch-example-2',
+      lazy: async () => {
+        const { FetchExample2 } = await import('@/features/FetchExample2');
+        return { Component: FetchExample2 };
       },
     },
   ]);
