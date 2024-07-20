@@ -14,7 +14,7 @@ const useFetch = <T>(path: string | null) => {
       setLoading(true);
       try {
         const response = await api.get<T>(path);
-        const data = await response.data;
+        const data = response.data;
         setData(data);
         setError(null);
       } catch (error: unknown) {

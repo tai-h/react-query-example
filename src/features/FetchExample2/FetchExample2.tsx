@@ -1,4 +1,4 @@
-import { Post, User } from '@/types/api';
+import { Post, Todo, User } from '@/types/api';
 import styled from 'styled-components';
 import useFetch from './hooks/useFetch';
 
@@ -24,13 +24,13 @@ export function FetchExample2() {
     data: comments,
     error: commentsError,
     loading: commentsLoading,
-  } = useFetch<Post[]>(postId ? `/posts/${postId}/comments` : null);
+  } = useFetch<Comment[]>(postId ? `/posts/${postId}/comments` : null);
 
   const {
     data: todos,
     error: todosError,
     loading: todosLoading,
-  } = useFetch<Post[]>(userId ? `/users/${userId}/todos` : null);
+  } = useFetch<Todo[]>(userId ? `/users/${userId}/todos` : null);
 
   return (
     <StyledFetchExample2>

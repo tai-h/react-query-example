@@ -14,7 +14,12 @@ export function Home() {
       <ul>
         <li>
           <Link to="/fetch-example-1">fetch Example 1</Link>
+        </li>
+        <li>
           <Link to="/fetch-example-2">fetch Example 2</Link>
+        </li>
+        <li>
+          <Link to="/fetch-example-3">fetch Example 3</Link>
         </li>
       </ul>
     </StyledHome>
