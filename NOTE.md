@@ -27,3 +27,12 @@
 import { AppProvider } from '@/providers/app';
 import { AppRoutes } from '@/routes';
 ```
+
+## lazyImport
+
+```tsx
+const { Home } = lazyImport(() => import('@/features/Home'), 'Home');
+const { About } = lazyImport(() => import('@/features/About'), 'About');
+
+const routes = [{ path: '/', element: <Home /> }];
+```

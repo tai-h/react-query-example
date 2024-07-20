@@ -1,16 +1,45 @@
-import styled from 'styled-components';
+import { Home } from '@/features/Home';
+import { Suspense, useMemo } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import NxWelcome from './nx-welcome';
+type AppProviderProps = {
+  children: React.ReactNode;
+};
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+const AppProvider = ({ children }: AppProviderProps) => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center w-screen h-screen">
+          loading...
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
+};
+
+const createRouter = () => {
+  return createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />,
+    },
+  ]);
+};
+
+const AppRouter = () => {
+  const router = useMemo(() => createRouter(), []);
+
+  return <RouterProvider router={router} />;
+};
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="react-query-example" />
-    </StyledApp>
+    <AppProvider>
+      <AppRouter />
+    </AppProvider>
   );
 }
 
