@@ -27,6 +27,9 @@ export function Home() {
         <li>
           <Link to="/tanstack-query-example-1">TanStack Query Example 1</Link>
         </li>
+        <li>
+          <Link to="/suspense-example-1">Suspense Example 1</Link>
+        </li>
       </ul>
     </StyledHome>
   );

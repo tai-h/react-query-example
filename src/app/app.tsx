@@ -73,6 +73,13 @@ const createRouter = () => {
         return { Component: TanStackQueryExample1 };
       },
     },
+    {
+      path: '/suspense-example-1',
+      lazy: async () => {
+        const { SuspenseExample1 } = await import('@/features/SuspenseExample1');
+        return { Component: SuspenseExample1 };
+      },
+    },
   ]);
 };
 
