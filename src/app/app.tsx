@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Suspense, useMemo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -5,10 +7,24 @@ type AppProviderProps = {
   children: React.ReactNode;
 };
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // throwOnError: true,
+      refetchOnWindowFocus: false,
+      retry: false,
+      staleTime: 1000 * 60,
+    },
+  },
+});
+
 const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen">loading...</div>}>
-      {children}
+      <QueryClientProvider client={queryClient}>
+        {import.meta.env.DEV && <ReactQueryDevtools />}
+        {children}
+      </QueryClientProvider>
     </Suspense>
   );
 };
@@ -48,6 +64,13 @@ const createRouter = () => {
       lazy: async () => {
         const { FetchExample3 } = await import('@/features/FetchExample3');
         return { Component: FetchExample3 };
+      },
+    },
+    {
+      path: '/tanstack-query-example-1',
+      lazy: async () => {
+        const { TanStackQueryExample1 } = await import('@/features/TanStackQueryExample1');
+        return { Component: TanStackQueryExample1 };
       },
     },
   ]);

@@ -24,6 +24,9 @@ export function Home() {
         <li>
           <Link to="/fetch-example-3">fetch Example 3</Link>
         </li>
+        <li>
+          <Link to="/tanstack-query-example-1">TanStack Query Example 1</Link>
+        </li>
       </ul>
     </StyledHome>
   );
