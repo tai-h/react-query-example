@@ -80,6 +80,13 @@ const createRouter = () => {
         return { Component: SuspenseExample1 };
       },
     },
+    {
+      path: '/reducer-example-1',
+      lazy: async () => {
+        const { ReducerExample1 } = await import('@/features/ReducerExample1');
+        return { Component: ReducerExample1 };
+      },
+    },
   ]);
 };
 
