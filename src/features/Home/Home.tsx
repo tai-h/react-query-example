@@ -33,6 +33,9 @@ export function Home() {
         <li>
           <Link to="/reducer-example-1">Reducer Example 1</Link>
         </li>
+        <li>
+          <Link to="/reducer-example-2">Reducer Example 2</Link>
+        </li>
       </ul>
     </StyledHome>
   );
