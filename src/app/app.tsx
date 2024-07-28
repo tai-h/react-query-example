@@ -94,6 +94,13 @@ const createRouter = () => {
         return { Component: ReducerExample2 };
       },
     },
+    {
+      path: '/context-example-1',
+      lazy: async () => {
+        const { ContextExample1Provider } = await import('@/features/ContextExample1');
+        return { Component: ContextExample1Provider };
+      },
+    },
   ]);
 };
 
