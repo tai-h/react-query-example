@@ -1,6 +1,7 @@
 import { Post, Todo, User } from '@/types/api';
 import { useReducer } from 'react';
 
+/** 「状態」の型定義 */
 type State = {
   users: User[] | null;
   posts: Post[] | null;
@@ -10,7 +11,7 @@ type State = {
   selectedPost: Post | null;
 };
 
-// アクションの型定義
+/** 「アクション」の種別定義 */
 type Action =
   | { type: 'SET_USERS'; payload: User[] }
   | { type: 'SET_POSTS'; payload: Post[] }
@@ -19,15 +20,7 @@ type Action =
   | { type: 'SET_SELECTED_USER'; payload: User }
   | { type: 'SET_SELECTED_POSTS'; payload: Post };
 
-const initialState: State = {
-  users: null,
-  posts: null,
-  comments: null,
-  todos: null,
-  selectedUser: null,
-  selectedPost: null,
-};
-
+/** Reducer関数の定義 */
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SET_USERS':
@@ -47,17 +40,28 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
+/** 初期状態の定義 */
+const initialState: State = {
+  users: null,
+  posts: null,
+  comments: null,
+  todos: null,
+  selectedUser: null,
+  selectedPost: null,
+};
+
+/** createContext で使用する Context の初期値 */
+const defaultContext: ReturnType<typeof useContextExample1Reducer> = {
+  state: initialState,
+  dispatch: () => null,
+};
+
+/** 「状態」を管理する Reducer を提供するカスタムフック */
 const useContextExample1Reducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return { state, dispatch };
 };
 
-// createContextの初期値用オブジェクト
-const defaultContextExample1Reducer: ReturnType<typeof useContextExample1Reducer> = {
-  state: initialState,
-  dispatch: () => null,
-};
-
-export { defaultContextExample1Reducer };
+export { defaultContext };
 export default useContextExample1Reducer;

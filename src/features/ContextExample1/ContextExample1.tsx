@@ -2,14 +2,14 @@ import { api } from '@/lib/api-client';
 import { Post, Todo, User } from '@/types/api';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import useContextExample1Reducer from './ContextExample1.store';
+import { useContextExample1Context } from './ContextExample1.provider';
 
 const StyledContextExample1 = styled.div`
   color: black;
 `;
 
 export function ContextExample1() {
-  const { state, dispatch } = useContextExample1Reducer();
+  const { state, dispatch } = useContextExample1Context();
 
   // 画面表示時にデータを取得
   useEffect(() => {
@@ -75,7 +75,7 @@ export function ContextExample1() {
 }
 
 function StateView(): JSX.Element {
-  const { state } = useContextExample1Reducer();
+  const { state } = useContextExample1Context();
 
   return (
     <>

@@ -2,17 +2,18 @@
  * @see https://qiita.com/curry__30/items/ecadc33eea5f54c0bd7a
  */
 
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import ContextExample1 from './ContextExample1';
-import useContextExample1Reducer, { defaultContextExample1Reducer } from './ContextExample1.store';
+import useContextExample1Reducer, { defaultContext } from './ContextExample1.store';
 
-// createContextのdefaultValue
-const { state, dispatch } = defaultContextExample1Reducer;
+/** Reducer が保持する「状態」で初期化された Context */
+const ContextExample1Context = createContext(defaultContext);
 
-const ContextExample1Context = createContext({ state, dispatch });
+/** 「Context」を提供するカスタムフック */
+export const useContextExample1Context = () => useContext(ContextExample1Context);
 
+/** 「Reducer」を提供する Provider */
 export const ContextExample1Provider = (): JSX.Element => {
-  // カスタムフックの返り値
   const { state, dispatch } = useContextExample1Reducer();
 
   return (
