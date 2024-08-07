@@ -8,6 +8,8 @@ const StyledTanStackQueryExample1 = styled.div`
 `;
 
 export function TanStackQueryExample1() {
+  console.count('★★★ TanStackQueryExample1 レンダリング ★★★');
+
   const fetchUsers = async () => {
     const { data } = await api.get<User[]>('/users');
     return data;

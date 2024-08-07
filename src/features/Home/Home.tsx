@@ -39,6 +39,9 @@ export function Home() {
         <li>
           <Link to="/context-example-1">Context Example 1</Link>
         </li>
+        <li>
+          <Link to="/swr-example-1">Swr Example 1</Link>
+        </li>
       </ul>
     </StyledHome>
   );

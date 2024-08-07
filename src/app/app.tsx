@@ -101,6 +101,13 @@ const createRouter = () => {
         return { Component: ContextExample1Provider };
       },
     },
+    {
+      path: '/swr-example-1',
+      lazy: async () => {
+        const { SwrExample1 } = await import('@/features/SwrExample1');
+        return { Component: SwrExample1 };
+      },
+    },
   ]);
 };
 

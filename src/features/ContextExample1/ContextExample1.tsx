@@ -9,6 +9,8 @@ const StyledContextExample1 = styled.div`
 `;
 
 export function ContextExample1() {
+  console.count('★★★ ContextExample1 レンダリング ★★★');
+
   const { state, dispatch } = useContextExample1Context();
 
   // 画面表示時にデータを取得

@@ -57,6 +57,8 @@ const reducer = (state: State, action: Action): State => {
  * useReducer を使って状態管理をする例
  */
 export function ReducerExample1() {
+  console.count('★★★ ReducerExample1 レンダリング ★★★');
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // 画面表示時にデータを取得

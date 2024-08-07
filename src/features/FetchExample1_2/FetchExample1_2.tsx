@@ -11,6 +11,8 @@ const StyledFetchExample = styled.div`
  * Promise.all を使う例
  */
 export function FetchExample1_2() {
+  console.count('★★★ FetchExample1_2 レンダリング ★★★');
+
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);

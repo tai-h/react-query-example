@@ -56,6 +56,8 @@ function UsersView() {
  * @see https://zenn.dev/takagimeow/articles/switch-from-useeffect-to-suspense
  */
 export function SuspenseExample1() {
+  console.count('★★★ SuspenseExample1 レンダリング ★★★');
+
   return (
     <StyledSuspenseExample1>
       <h1>Welcome to SuspenseExample1!</h1>

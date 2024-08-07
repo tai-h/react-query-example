@@ -11,6 +11,8 @@ const StyledFetchExample3 = styled.div`
  * カスタムフックからコールバックを返して、リクエストウォーターフォールを実現する例。
  */
 export function FetchExample3() {
+  console.count('★★★ FetchExample3 レンダリング ★★★');
+
   const { data: users, error: usersError, loading: usersLoading, fetchData: fetchUsers } = useFetch<User[]>();
   const { data: posts, error: postsError, loading: postsLoading, fetchData: fetchPosts } = useFetch<Post[]>();
   const {

@@ -12,6 +12,8 @@ const StyledFetchExample1 = styled.div`
  * 前のデータを取得したら次のデータを取得する「リクエストウォーターフォール」の例。
  */
 export function FetchExample1() {
+  console.count('★★★ FetchExample1 レンダリング ★★★');
+
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);

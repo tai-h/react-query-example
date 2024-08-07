@@ -108,9 +108,9 @@ const rootReducer = combineReducers<AppState>({
  * reducer関数を分割して管理する例
  */
 export function ReducerExample2() {
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  console.count('★★★ ReducerExample2 レンダリング ★★★');
 
-  console.log(state);
+  const [state, dispatch] = useReducer(rootReducer, initialState);
 
   // 画面表示時にデータを取得
   useEffect(() => {

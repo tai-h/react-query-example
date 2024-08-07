@@ -10,6 +10,8 @@ const StyledFetchExample2 = styled.div`
  * カスタムフックのデータアクセスを使って、リクエストウォーターフォールを実現する例。
  */
 export function FetchExample2() {
+  console.count('★★★ FetchExample2 レンダリング ★★★');
+
   const { data: users, error: usersError, loading: usersLoading } = useFetch<User[]>('/users');
 
   const userId = users ? users[0].id : null;
