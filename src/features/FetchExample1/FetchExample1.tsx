@@ -19,10 +19,13 @@ export function FetchExample1() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     let ignore = false;
 
     const fetchData = async () => {
+      setLoading(true);
       const { data: users } = await api.get<User[]>('/users');
       if (!ignore) setUsers(users);
 
@@ -36,6 +39,8 @@ export function FetchExample1() {
 
       const { data: todos } = await api.get<Todo[]>(`/users/${userId}/todos`);
       if (!ignore) setTodos(todos);
+
+      setLoading(false);
     };
 
     fetchData();
@@ -44,6 +49,19 @@ export function FetchExample1() {
       ignore = true;
     };
   }, []);
+
+  useEffect(() => {
+    // loadingを見ることですべてのデータが取得されたかを確認できる。
+    // loadingがfalseになったことを確認して表示用データに加工する処理を行えば無駄なレンダリングを防げる。
+    console.count('データ変更検知');
+    console.log({
+      loading,
+      users,
+      posts,
+      comments,
+      todos,
+    });
+  }, [loading, users, posts, comments, todos]);
 
   return (
     <StyledFetchExample1>
