@@ -20,23 +20,29 @@ export function FetchExample1() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
+    let ignore = false;
+
     const fetchData = async () => {
       const { data: users } = await api.get<User[]>('/users');
-      setUsers(users);
+      if (!ignore) setUsers(users);
 
       const userId = users[0].id;
       const { data: posts } = await api.get<Post[]>(`/users/${userId}/posts`);
-      setPosts(posts);
+      if (!ignore) setPosts(posts);
 
       const postId = posts[0].id;
       const { data: comments } = await api.get<Comment[]>(`/posts/${postId}/comments`);
-      setComments(comments);
+      if (!ignore) setComments(comments);
 
       const { data: todos } = await api.get<Todo[]>(`/users/${userId}/todos`);
-      setTodos(todos);
+      if (!ignore) setTodos(todos);
     };
 
     fetchData();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return (
